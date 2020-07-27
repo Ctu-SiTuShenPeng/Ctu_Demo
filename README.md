@@ -1,1 +1,1 @@
-# Ctu_PaddlePaddle_Demo
+# Ctu_Demo
