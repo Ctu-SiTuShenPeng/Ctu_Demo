@@ -4,7 +4,7 @@ import paddle, os, cv2, time
 def image_reader(self):
     def reader():
         for line in self.DataList:
-            img_path, label = line.split(',')
+            img_path, label = line.split(' ')
             img = cv2.imread(img_path)
             img = cv2.resize(img, (224, 224))
             img = img.transpose((2, 0, 1))
