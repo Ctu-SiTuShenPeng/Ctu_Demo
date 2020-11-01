@@ -46,7 +46,6 @@ feeder = fluid.DataFeeder(place=place, feed_list=[image, label])
 
 for pass_id in range(500):
     for batch_id, data in enumerate(train_reader()):
-        start_time = time.time()
         train_cost, train_acc = exe.run(program=fluid.default_main_program(), feed=feeder.feed(data), fetch_list=[avg_cost, acc])
-        print('迭代[%d:%d]-> 训练Loss:%0.5f, 准确率:%0.5f -> 耗时:%0.5f 秒' % (pass_id + 1, batch_id + 1, train_cost[0], train_acc[0], time.time() - start_time))
+        print('迭代[%d:%d]-> 训练Loss:%0.5f, 准确率:%0.5f' % (pass_id + 1, batch_id + 1, train_cost[0], train_acc[0]))
     fluid.io.save_inference_model("./ModelData", feeded_var_names=[image.name], target_vars=[model], executor=exe)
